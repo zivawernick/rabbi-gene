@@ -1,8 +1,12 @@
-name = "rabbi-g-website"
+name = "rabbi-gene"
 compatibility_date = "2026-01-24"
-workers_dev = false
+workers_dev = true
 preview_urls = false
 send_metrics = false
+
+#[[routes]]
+#pattern = "gene.rabbiwernick.com"
+#custom_domain = true
 
 [assets]
 directory = "./dist"
