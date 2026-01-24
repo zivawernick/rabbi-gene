@@ -1,8 +1,9 @@
 export const profile = {
-	fullName: 'Your Name',
-	title: '',
+	fullName: 'Eugene Wernick',
+	shortName: 'Rabbi Gene Wernick',
+	title: 'Rabbi',
 	institute: '',
-	author_name: '', // Author name to be highlighted in the papers section
+	author_name: 'Rabbi Gene', // Author name to be highlighted in the papers section
 	research_areas: [
 		// { title: 'Physics', description: 'Brief description of the research interest', field: 'physics' },
 	],
@@ -10,14 +11,9 @@ export const profile = {
 
 // Set equal to an empty string to hide the icon that you don't want to display
 export const social = {
-	email: '',
-	linkedin: '',
-	x: 'https://www.x.com/',
-	bluesky: '',
-	github: '',
-	gitlab: '',
+	email: 'rabbigenew@gmail.com',
+	linkedin: 'https://www.linkedin.com/in/eugene-wernick-29132894/',
 	scholar: '',
-	inspire: '',
 	arxiv: '',
 	orcid: '',
 }
@@ -34,7 +30,7 @@ export const template = {
 }
 
 export const seo = {
-	default_title: 'Astro Academia',
-	default_description: 'Astro Academia is a template for academic websites.',
-	default_image: '/images/astro-academia.png',
+	default_title: 'Rabbi Gene Wernick',
+	default_description: 'Rabbi Eugene (Gene) Wernick is a Rabbi, Educator and Author.',
+	default_image: '/images/profile_pictures.jpg',
 }
