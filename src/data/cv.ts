@@ -17,11 +17,23 @@ export const experiences = [
 
 export const education = [
 	{
-		school: '',
-		time: '',
-		degree: '',
-		location: '',
-		description: '',
+		degree: 'Rabbinic Smicha',
+		school: 'Jewish Theological Seminary',
+		time: '1965',
+		location: 'New York, NY',
+		description: 'Talmud Honors Program',
+	},
+	{
+		degree: "Masters in Hebrew Literature",
+		school: "The Jewish Theological Seminary",
+		time: "1965",
+	},
+	{
+		school: 'City College of New York',
+		degree: 'Bachelor of Arts with Honors',
+      	time: "1960",
+		location: 'New York, NY',
+		description: 'Magna Cum Laude: Phi Beta Kappa, Phi Alpha Theta',
 	},
 ];
 
@@ -30,6 +42,35 @@ export const skills = [
 		title: '',
 		description: '',
 	},
+	{
+		title: 'Hebrew', 
+		description: 'Fluent',
+	},
+	{
+		title: 'Aramaic', 
+		description: 'Fluent',
+	},
+	{	
+		title: 'Yiddish',
+		description: 'Fluent',
+	},
+	{
+		title: 'German',
+		description: 'Strong working knowledge',
+	},
+	{
+		title: 'French',
+		description: 'Strong working knowledge',
+	},
+		{
+		title: 'Greek',
+		description: 'Knowledgeable',
+	},
+	{
+		title: 'Latin',
+		description: 'Knowledgeable',
+	}
+
 	// {
 	// 	title: 'Experimental Techniques',
 	// 	description: 'Spectroscopy, Isolation of Radioactive Elements, Radiation Measurement',
@@ -38,19 +79,19 @@ export const skills = [
 
 export const publications = [
 	{
-		title: '',
-		authors: '',
+		title: 'A Gateway to the Kabbalah',
+		authors: 'Rabbi Eugene A. Wernick',
 		journal: '',
-		time: '',
-		link: '',
-		abstract: '',
+		time: '2015',
+		link: 'https://www.bloomsbury.com/us/gateway-to-the-kabbalah-9780838100738/',
+		abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
 	},
 	// {
-	// 	title: 'The Radiation of Uranium Compounds',
-	// 	authors: 'Marie Curie',
+	// 	title: '',
+	// 	authors: '',
 	// 	journal: 'Comptes Rendus de l’Académie des Sciences',
-	// 	time: '1898',
+	// 	time: '2015',
 	// 	link: '#',
-	// 	abstract: 'Early research leading to the identification of uranium’s radioactive properties.',
+	// 	abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
 	// },
 ];

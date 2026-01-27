@@ -8,7 +8,7 @@ import { template } from '@/settings'
 
 const isBlogPopulated = await getCollection('blog').then(collection => collection.length > 0)
 
-const {fullName, title} = profile
+const {fullName, title, shortName} = profile
 ---
 <aside
 	class='px-4 pt-4 h-screen w-[20rem] bg-base-200 text-base-content flex flex-col'
@@ -21,7 +21,7 @@ const {fullName, title} = profile
 					src={ProfilePictures}
 					alt={`Profile picture of ${fullName}`}
 				/>
-				<h1 class="text-lg font-black mt-8 hidden lg:block">{title} <span>{fullName}</span></h1>
+				<h1 class="text-lg font-black mt-8 hidden lg:block"><span>{shortName}</span></h1>
 			</div>
 			<div class='mx-4 mt-16'>
 				<ul class='space-y-4 menu grow shrink menu-md overflow-y-auto'>
@@ -32,7 +32,7 @@ const {fullName, title} = profile
                         <a href={`${template.base}/research`} class='text-lg'>Research</a>
 					</li>
 					<li>
-                        <a href={`${template.base}/papers`} class='text-lg'>Papers</a>
+                        <a href={`${template.base}/publications`} class='text-lg'>Publications</a>
 					</li>
 					<li>
                         <a href={`${template.base}/cv`} class='text-lg'>CV</a>

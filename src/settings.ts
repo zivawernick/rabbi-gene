@@ -1,9 +1,9 @@
 export const profile = {
-	fullName: 'Eugene Wernick',
+	fullName: 'Eugene A. Wernick',
 	shortName: 'Rabbi Gene Wernick',
 	title: 'Rabbi',
 	institute: '',
-	author_name: 'Rabbi Gene', // Author name to be highlighted in the papers section
+	author_name: 'Rabbi Eugene A. Wernick', // Author name to be highlighted in the papers section
 	research_areas: [
 		// { title: 'Physics', description: 'Brief description of the research interest', field: 'physics' },
 	],
@@ -23,7 +23,7 @@ export const template = {
 	menu_left: false,
 	transitions: true,
 	lightTheme: 'light', // Select one of the Daisy UI Themes or create your own
-	darkTheme: 'dark', // Select one of the Daisy UI Themes or create your own
+	darkTheme: 'forest', // Select one of the Daisy UI Themes or create your own
 	excerptLength: 200,
 	postPerPage: 5,
     base: '' // Repository name starting with /
