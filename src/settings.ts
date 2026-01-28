@@ -1,6 +1,7 @@
 export const profile = {
 	fullName: 'Eugene A. Wernick',
 	shortName: 'Rabbi Gene Wernick',
+	slogan: 'Rabbi, Author, Educator, Speaker',
 	title: 'Rabbi',
 	institute: '',
 	author_name: 'Rabbi Eugene A. Wernick', // Author name to be highlighted in the papers section

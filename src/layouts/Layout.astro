@@ -46,6 +46,7 @@ const {
 								/* <ThemeSelector transition:persist /> */
 							}
 							<label for='my-drawer' class='btn btn-square btn-ghost lg:hidden'>
+								<span class="sr-only" id="menu-toggle-text">Open menu</span>
 								<BetterIcon>
 									<svg
 										xmlns='http://www.w3.org/2000/svg'
@@ -83,10 +84,30 @@ const {
 			<!-- Drawer side -->
 			<div class='drawer-side z-40'>
 				<label for='my-drawer' aria-label='close sidebar' class='drawer-overlay'
-				></label>
+				><span class="sr-only">close sidebar</span></label>
 				<Navbar />
 			</div>
 		</div>
+		<script is:inline>
+			document.addEventListener('DOMContentLoaded', () => {
+				const drawerToggle = document.getElementById('my-drawer');
+				const menuToggleText = document.getElementById('menu-toggle-text');
+
+				if (drawerToggle && menuToggleText) {
+					const updateText = () => {
+						if (drawerToggle.checked) {
+							menuToggleText.textContent = 'Close menu';
+						} else {
+							menuToggleText.textContent = 'Open menu';
+						}
+					};
+
+					drawerToggle.addEventListener('change', updateText);
+					// Set initial text
+					updateText();
+				}
+			});
+		</script>
 	</body>
 </html>
 
