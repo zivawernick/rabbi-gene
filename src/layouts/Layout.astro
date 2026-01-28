@@ -38,7 +38,7 @@ const {
 			<input id='my-drawer' type='checkbox' class='drawer-toggle' />
 			<!-- Drawer content -->
             <div class='drawer-content bg-base-100'>
-				<div class='bg-base-100 z-50 text-base-content shadow-sm'>
+				<div class='bg-base-100 z-50 text-base-content shadow-sm fixed lg:static top-0 w-full'>
 					<nav class='navbar'>
 						<div class='navbar-start'>
 							{template.menu_left &&
@@ -74,7 +74,7 @@ const {
 						</div>
 					</nav>
 				</div>
-                <main class='p-8 pt-10 lg:pt-16 lg:max-w-5xl max-w-full mx-auto min-h-screen flex flex-col justify-between'>
+                <main class='p-8 pt-20 lg:pt-16 lg:max-w-5xl max-w-full mx-auto min-h-screen flex flex-col justify-between'>
 					<!-- Page content -->
 					<slot />
 				<Footer />
