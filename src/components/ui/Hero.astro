@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets'
 
-import SocialIcons from './SocialIcons.astro'
+import SocialIcons from '@/components/ui/SocialIcons.astro'
 
 
 const {fullName, shortName, slogan, title, institute, profilePicture} = Astro.props
@@ -10,7 +10,8 @@ const {fullName, shortName, slogan, title, institute, profilePicture} = Astro.pr
   <h1 class='text-4xl font-bold mb-4'>
     Welcome! I'm <span class='text-secondary'>{shortName}</span>
   </h1>
-  <p class='text-xl text-gray-600 mb-4'> {slogan}</p>
+  <h2 class='text-3xl font-bold mb-8'> <span class='text-secondary'>{slogan}</span>
+  </h2>
   <p class='text-lg mb-6'>
     Gene Wernick is a Rabbi with a passion for education, scholarship and community. Having published his first book almost a decade ago he is set to
     release his newest work in 2026. A commentary on the importance of Tribes and the role Rabbi Ascher ben Yechiel had

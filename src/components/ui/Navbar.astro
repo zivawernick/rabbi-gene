@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import {profile} from '../../settings'
+import {profile} from '@/settings'
 import SocialIcons from './SocialIcons.astro'
 import ProfilePictures from '@/assets/profile_pictures.jpg'
 import { getCollection } from 'astro:content'
@@ -16,13 +16,17 @@ const {fullName, title, shortName} = profile
 	<div class='flex flex-col my-8 justify-between h-full'>
 		<div>
 			<div class='flex justify-center items-center flex-col'>
-				<Image
-					class='mask mask-circle size-44'
-					src={ProfilePictures}
-					alt={`Profile picture of ${fullName}`}
-				/>
-				<h1 class="text-lg font-black mt-8 hidden lg:block"><span>{shortName}</span></h1>
-			</div>
+						<Image
+							class='mask mask-circle size-44 mb-4'
+							src={ProfilePictures}
+							alt={`Profile picture of ${fullName}`}
+						/>
+						<h1 class="text-lg font-black mt-8 text-center"><span>{shortName}</span></h1>
+						<p class="text-sm text-center text-base-content/70">{profile.slogan}</p>
+					</div>
+					<div class='navbar-center lg:hidden text-lg font-black'>
+						{profile.shortName}
+					</div>
 			<div class='mx-4 mt-16'>
 				<ul class='space-y-4 menu grow shrink menu-md overflow-y-auto'>
 					<li>
@@ -37,9 +41,9 @@ const {fullName, title, shortName} = profile
 					<li>
                         <a href={`${template.base}/cv`} class='text-lg'>CV</a>
                     </li>
-                    					<li>
-                                            <a href={`${template.base}/blog/1`} class='text-lg'>Blog</a>
-                                        </li>				</ul>
+					<li>
+						<a href={`${template.base}/blog/1`} class='text-lg'>Blog</a>
+					</li>				</ul>
 			</div>
 		</div>
 		<div class='mx-4'>
