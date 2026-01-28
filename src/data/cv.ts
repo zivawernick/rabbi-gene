@@ -1,18 +1,40 @@
 export const experiences = [
 	{
-		company: '',
-		time: '',
-		title: '',
-		location: '',
+		company: 'Or Olam',
+		time: '2015-2025',
+		title: 'Senior Rabbi',
+		location: 'E 55th St NYC',
 		description: '',
 	},
-	// {
-	// 	company: 'Radium Institute (Institut du Radium)',
-	// 	time: '1914 - 1934',
-	// 	title: 'Director',
-	// 	location: 'Paris, France',
-	// 	description: 'Led groundbreaking studies on radioactivity and mentored future Nobel Prize laureates.',
-	// },
+	{
+		company: 'Golda Och Academy',
+		time: '2009-2019',	 
+		title: 'Judaiscs Educator',
+		location: 'West Orange, New Jersey',
+		description: 'Established a Talmud Honors course in which I have trained students to be able to master complex sections using the Vilna Shas, Rashi, Tosafot, Maharsha, Ran, Ritva and Rambam and other codes.  Many who have attended who were not members have since joined our congregation.'
+	},
+	{
+		company: 'Congregation Beth Ohr',
+		time: '2003-2012',	 
+		title: 'Senior Rabbi',
+		location: 'Old Bridge, New Jersey',
+		description: 'Instituted a Shabbat Lunch and Learn in which on a variety of topics have attracted double the amount of congregants who attend.  Many who have attended who were not members have since joined our congregation.'
+	},
+	{
+		company: 'Oxford Circle Jewish Community Center ',
+		time: '2000-2003',	 
+		title: 'Senior Rabbi',
+		location: 'Philadelphia, Pennsylvania',
+		description: ''
+	},
+	{
+		company: 'Temple Beth El',
+		time: '1987-2000',	 
+		title: 'Senior Rabbi',
+		location: 'Allentown, Pennslyvania',
+		description: ''
+	},
+		 
 ];
 
 export const education = [
@@ -38,10 +60,40 @@ export const education = [
 ];
 
 export const skills = [
+	
+	{
+		title: '', 
+		description: '',
+	},
+	{
+		title: '', 
+		description: '',
+	},
+	{	
+		title: '',
+		description: '',
+	},
 	{
 		title: '',
 		description: '',
 	},
+	{
+		title: '',
+		description: '',
+	},
+		{
+		title: '',
+		description: '',
+	},
+	{
+		title: '',
+		description: '',
+	}
+
+];
+
+export const languageskills = [
+	
 	{
 		title: 'Hebrew', 
 		description: 'Fluent',
@@ -76,7 +128,6 @@ export const skills = [
 	// 	description: 'Spectroscopy, Isolation of Radioactive Elements, Radiation Measurement',
 	// },
 ];
-
 export const publications = [
 	{
 		title: 'A Gateway to the Kabbalah',
@@ -88,9 +139,9 @@ export const publications = [
 	},
 	// {
 	// 	title: '',
-	// 	authors: '',
+	// 	authors: 'Rabbi Eugene A. Wernick',
 	// 	journal: 'Comptes Rendus de l’Académie des Sciences',
-	// 	time: '2015',
+	// 	time: '2025',
 	// 	link: '#',
 	// 	abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
 	// },

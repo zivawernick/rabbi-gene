@@ -1,4 +1,5 @@
 ---
+import { slugify } from '@/lib/utils';
 interface Props {
   listTitle: string;
   listItems: {
@@ -19,6 +20,11 @@ const {listTitle, listItems} = Astro.props
 						<p >
 							{item.journal} • {item.time}
 						</p>
+            <div class="card-actions justify-end mt-4">
+              <a href={`/publications#${slugify(item.title)}`} class="btn btn-sm btn-outline">
+                Read More
+              </a>
+            </div>
 					</div>
 				))
 			}

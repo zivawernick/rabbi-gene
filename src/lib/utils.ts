@@ -13,3 +13,11 @@ export function trimExcerpt(excerpt: string): string {
 	const excerptLength = template.excerptLength
 	return excerpt.length > excerptLength ? `${excerpt.substring(0, excerptLength)}...` : excerpt
 }
+
+export function slugify(text: string): string {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '');
+}

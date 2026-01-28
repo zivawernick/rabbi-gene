@@ -1,7 +1,7 @@
 ---
 import { isSkill } from '@/types/cv';
 import type { Skill, Publication } from '@/types/cv';
-import { highlightAuthor } from '@/lib/utils'
+import { highlightAuthor, slugify } from '@/lib/utils'
 
 interface Props {
 	elements: (Skill | Publication)[]
@@ -11,7 +11,7 @@ const { elements } = Astro.props
 ---
 <ul class='space-y-8'>
   {elements.map((element, index) => (
-    <li class='group'>
+    <li class='group' id={slugify(element.title)}>
       { isSkill(element)
         ? <>
         <h3 class='text-lg font-bold mb-2'>{element.title}</h3>
@@ -35,6 +35,11 @@ const { elements } = Astro.props
         {element.time}
       </p>
       <p>{element.abstract}</p>
+      <div class="card-actions justify-end mt-4">
+        <a href={element.link} class="btn btn-sm btn-secondary text-secondary-content">
+          Buy Book
+        </a>
+      </div>
       </>
     }
     {/* Uncomment this line to add a small border bottom for each element
