@@ -12,7 +12,7 @@ export async function getStaticPaths({ paginate }): Promise<Astro.getStaticPaths
         .map(post => ({
             title: post.data.title,
             date: post.data.date,
-            badge: post.data.tags[0],
+            badge: post.data.tags?.[0] || 'Uncategorized',
             excerpt: trimExcerpt(post.data.excerpt),
             slug: `${template.base}/blog/${post.id}`,
         }))
