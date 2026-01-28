@@ -7,11 +7,13 @@ const ALL_PAPERS = publications; // This will be replaced with dynamic data on t
 ---
 
 <Layout title="Publications">
-  <div class="prose max-w-none">
+  <div class="max-w-none">
     <h1 class="text-3xl font-bold mb-8">Publications</h1>
 
-    <PublicationsList elements={ALL_PAPERS} />
-
+    <div class="overflow-visible">
+      <PublicationsList elements={ALL_PAPERS} />
+    </div>
+    
     <div class="flex justify-center mt-8">
       <div class="join">
         <button class="join-item btn btn-sm">«</button>

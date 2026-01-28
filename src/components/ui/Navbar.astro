@@ -15,7 +15,7 @@ const {fullName, title, shortName} = profile
 >
 	<div class='flex flex-col my-8 justify-between h-full'>
 		<div>
-			<div class='flex justify-center items-center flex-col'>
+			<div class='flex justify-center items-center flex-col px-4 py-10 lg:px-0 lg:py-0'>
 						<Image
 							class='mask mask-circle size-44 mb-4'
 							src={ProfilePictures}
@@ -24,9 +24,7 @@ const {fullName, title, shortName} = profile
 						<h1 class="text-lg font-black mt-8 text-center"><span>{shortName}</span></h1>
 						<p class="text-sm text-center text-base-content/70">{profile.slogan}</p>
 					</div>
-					<div class='navbar-center lg:hidden text-lg font-black'>
-						{profile.shortName}
-					</div>
+					
 			<div class='mx-4 mt-16'>
 				<ul class='space-y-4 menu grow shrink menu-md overflow-y-auto'>
 					<li>

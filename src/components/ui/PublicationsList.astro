@@ -9,9 +9,15 @@ interface Props {
 
 const { elements } = Astro.props
 ---
-<ul class='space-y-8 list-none custom-publication-list'>
+<ul class='space-y-8 list-none custom-publication-list ml-10 mr-10'>
   {elements.map((element, index) => (
-    <li class='group custom-publication-item' id={slugify(element.title)}>
+    <li 
+    class='group custom-publication-item' 
+    id={slugify(element.title)}
+    style={!isSkill(element) && (element as Publication).coverImage 
+      ? `--cover-image: url(${(element as Publication).coverImage})` 
+      : ''}
+    >
       { isSkill(element)
         ? <>
         <h3 class='text-lg font-bold mb-2'>{element.title}</h3>
@@ -52,16 +58,17 @@ const { elements } = Astro.props
   .custom-publication-list > .custom-publication-item {
     position: relative;
     padding-left: 11em; /* Adjusted for 10em image width + 1em spacing */
+    margin-right: -2em; 
   }
 
   .custom-publication-list > .custom-publication-item::before {
     content: '';
     position: absolute;
-    left: -2.2em; /* Adjusted to pull image further left */
+    left: -3em; /* Adjusted to pull image further left */
     top: -0.2em; /* Adjusted for vertical alignment with title */
-    width: 10em;  /* Desired image width */
-    height: 15em; /* Desired image height */
-    background-image: url('/src/assets/Gateway-to-the-kabbalah-cover.jpg');
+    width: 13em;  /* Desired image width */
+    height: 17em; /* Desired image height */
+    background-image: var(--cover-image, url('/src/assets/Gateway-to-the-kabbalah-cover.jpg'));
     background-size: cover;
     background-repeat: no-repeat;
   }

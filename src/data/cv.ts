@@ -1,3 +1,5 @@
+import { string } from "astro:schema";
+
 export const experiences = [
 	{
 		company: 'Or Olam',
@@ -136,6 +138,7 @@ export const publications = [
 		time: '2015',
 		link: 'https://www.bloomsbury.com/us/gateway-to-the-kabbalah-9780838100738/',
 		abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
+		coverImage: '/src/assets/Gateway-to-the-kabbalah-cover.jpg'
 	},
 	// {
 	// 	title: '',
