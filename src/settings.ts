@@ -23,7 +23,7 @@ export const template = {
 	website_url: 'https://localhost:4321', // Astro needs to know your site’s deployed URL to generate a sitemap. It must start with http:// or https://
 	menu_left: false,
 	transitions: true,
-	lightTheme: 'light', // Select one of the Daisy UI Themes or create your own
+	lightTheme: 'corporate', // Select one of the Daisy UI Themes or create your own
 	darkTheme: 'forest', // Select one of the Daisy UI Themes or create your own
 	excerptLength: 200,
 	postPerPage: 5,
