@@ -140,12 +140,13 @@ export const publications = [
 		abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
 		coverImage: '/src/assets/a-gateway-to-the-kabbalah-cover.png'
 	},
-	// {
-	// 	title: '',
-	// 	authors: 'Rabbi Eugene A. Wernick',
-	// 	journal: 'Comptes Rendus de l’Académie des Sciences',
-	// 	time: '2025',
-	// 	link: '#',
-	// 	abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
-	// },
+	{
+	 	title: 'Antisemitism and the Tribe',
+	 	authors: 'Rabbi Eugene A. Wernick',
+	 	journal: '',
+	 	time: '2026',
+	 	link: 'https://www.rabbiwernick.com/Antisemitism-and-the-Tribe',
+	 	abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
+		coverImage: ''
+	},
 ];
