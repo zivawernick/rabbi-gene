@@ -4,9 +4,9 @@ import {template} from '@/settings'
 import {getCollection, render} from 'astro:content'
 
 export async function getStaticPaths(): Promise<Array<{ params: { slug: string }, props: { post: any } }>> {
-    const blogEntries = await getCollection("book2");
+    const bookEntries = await getCollection("book2");
 
-    const posts = blogEntries
+    const posts = bookEntries
         .map(post => {
         const slug = post.id
             return {
