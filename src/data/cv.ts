@@ -137,7 +137,7 @@ export const publications = [
 	 	journal: '',
 	 	time: '2026',
 	 	link: '/antisemitism-and-the-tribe/1',
-	 	abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
+	 	abstract: 'A historical examination of what it means to be a Jew.  Not just a religion or a nation but a familial relationship going back to its origins in the land of Israel. An extended family with feelings of kinship that does not obviate differences of opinions but celebrates them. An easy target for those who wish to hate someone or something because you will always be able to find some Jew who believes or does something you do not believe or hate.',
 		coverImage: ''
 	},
 	{
