@@ -16,7 +16,7 @@ export async function getStaticPaths({ paginate }): Promise<Astro.getStaticPaths
             excerpt: trimExcerpt(post.data.excerpt),
             slug: `${template.base}/antisemitism-and-the-tribe/${post.id}`,
         }))
-        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+        .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
     return paginate(posts, {
         pageSize: template.postPerPage,

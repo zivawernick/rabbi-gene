@@ -136,7 +136,7 @@ export const publications = [
 	 	authors: 'Rabbi Eugene A. Wernick',
 	 	journal: '',
 	 	time: '2026',
-	 	link: '/antisemitism-and-the-tribe',
+	 	link: '/antisemitism-and-the-tribe/1',
 	 	abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
 		coverImage: ''
 	},
