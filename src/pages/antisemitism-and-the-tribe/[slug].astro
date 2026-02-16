@@ -19,6 +19,12 @@ export async function getStaticPaths(): Promise<Array<{ params: { slug: string }
 const {post} = Astro.props;
 const { title, date, tags} = post.data; 
 const { Content } = await render(post);
+
+// Get all posts and sort by date
+const allPosts = await getCollection("book2");
+const sortedPosts = allPosts.sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+const currentIndex = sortedPosts.findIndex(p => p.id === post.id);
+const nextPost = currentIndex < sortedPosts.length - 1 ? sortedPosts[currentIndex + 1] : null;
 ---
 
 <Layout title={title}>
@@ -85,6 +91,32 @@ const { Content } = await render(post);
         >
                 <Content />
 			</div>
+
+			<!-- Next Chapter Button -->
+			{nextPost && (
+				<div class='mt-12 text-center'>
+					<a
+						href={`/antisemitism-and-the-tribe/${nextPost.id}`}
+						class='inline-flex items-center px-6 py-3 bg-accent text-accent-content font-semibold rounded-lg hover:bg-accent-focus transition-colors duration-200'
+					>
+						Next Chapter: {nextPost.data.title}
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							class='h-5 w-5 ml-2'
+							fill='none'
+							viewBox='0 0 24 24'
+							stroke='currentColor'
+						>
+							<path
+								stroke-linecap='round'
+								stroke-linejoin='round'
+								stroke-width='2'
+								d='M9 5l7 7-7 7'
+							/>
+						</svg>
+					</a>
+				</div>
+			)}
 		</article>
 	</div>
 </Layout>
