@@ -1,19 +1,12 @@
 import { string } from "astro:schema";
 
-export const experiences = [
+export const Experiences = [
 	{
 		company: 'Or Olam',
 		time: '2015-2025',
 		title: 'Senior Rabbi',
 		location: 'E 55th St NYC',
 		description: '',
-	},
-	{
-		company: 'Golda Och Academy',
-		time: '2009-2019',	 
-		title: 'Judaiscs Educator',
-		location: 'West Orange, New Jersey',
-		description: 'Established a Talmud Honors course in which I have trained students to be able to master complex sections using the Vilna Shas, Rashi, Tosafot, Maharsha, Ran, Ritva and Rambam and other codes.  Many who have attended who were not members have since joined our congregation.'
 	},
 	{
 		company: 'Congregation Beth Ohr',
@@ -36,7 +29,35 @@ export const experiences = [
 		location: 'Allentown, Pennslyvania',
 		description: ''
 	},
-		 
+	{	
+		company: 'Gratz Hebrew College',
+		location: 'Philadelphia, Pennsylvania',
+	},
+	{
+		company: 'St. Joseph University',
+		location: 'Philadelphia, Pennsylvania'
+	},
+    {
+       	company: 'Arcadia College',
+		location: 'Philadelphia, Pennsylvania'
+	},
+	{
+       	company: 'Muhlenberg College',
+		location: 'Allentown, Pennsylvania'
+	},
+	{
+		company: 'University of Manitoba',
+		location: 'Winnipeg, Manitoba, Canada'
+	},
+	{
+		company: 'Patten Bible College',
+		location: 'Oakland, California'
+	},
+	{
+		company: 'The Lehrhaus UC Berkely',
+		location: 'Oakland, California'
+	},	
+
 ];
 
 export const education = [
@@ -62,7 +83,16 @@ export const education = [
 ];
 
 export const skills = [
-	
+
+	/** Gratz Hebrew College Philadelphia, Pennsylvania
+        St. Joseph University Philadelphia, Pennsylvania
+       	Arcadia College Philadelphia, Pennsylvania
+		Muhlenberg College Allentown Pennsylvania
+		University of Manitoba, Winnipeg, Manitoba, Canada
+		Patten Bible College Oakland, California
+		The Lehrhaus UC Berkely, California**/
+                  
+
 	{
 		title: '', 
 		description: '',
