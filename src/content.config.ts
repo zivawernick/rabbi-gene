@@ -28,6 +28,7 @@ const book2 = defineCollection({
         date: z.string(),
         excerpt: z.string(),
         tags: z.array(z.string()).optional(),
+        slug: z.string().optional(),
     }),
 });
 
