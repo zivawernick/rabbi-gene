@@ -9,13 +9,6 @@ export const experiences = [
 		description: '',
 	},
 	{
-		company: 'Golda Och Academy',
-		time: '2009-2019',	 
-		title: 'Judaiscs Educator',
-		location: 'West Orange, New Jersey',
-		description: 'Established a Talmud Honors course in which I have trained students to be able to master complex sections using the Vilna Shas, Rashi, Tosafot, Maharsha, Ran, Ritva and Rambam and other codes.  Many who have attended who were not members have since joined our congregation.'
-	},
-	{
 		company: 'Congregation Beth Ohr',
 		time: '2003-2012',	 
 		title: 'Senior Rabbi',
@@ -36,7 +29,49 @@ export const experiences = [
 		location: 'Allentown, Pennslyvania',
 		description: ''
 	},
-		 
+	{	
+		company: 'Gratz Hebrew College',
+		time: '',	 
+		title: '',
+		location: 'Philadelphia, Pennsylvania',
+	},
+	{
+		company: 'St. Joseph University',
+		time: '',	 
+		title: '',
+		location: 'Philadelphia, Pennsylvania'
+	},
+    {
+       	company: 'Arcadia College',
+		time: '',	 
+		title: '',
+		location: 'Philadelphia, Pennsylvania'
+	},
+	{
+       	company: 'Muhlenberg College',
+		time: '',	 
+		title: '',
+		location: 'Allentown, Pennsylvania'
+	},
+	{
+		company: 'University of Manitoba',
+		time: '',	 
+		title: '',
+		location: 'Winnipeg, Manitoba, Canada'
+	},
+	{
+		company: 'Patten Bible College',
+		time: '',	 
+		title: '',
+		location: 'Oakland, California'
+	},
+	{
+		company: 'The Lehrhaus UC Berkely',
+		time: '',	 
+		title: '',
+		location: 'Oakland, California'
+	},	
+
 ];
 
 export const education = [
@@ -62,7 +97,16 @@ export const education = [
 ];
 
 export const skills = [
-	
+
+	/** Gratz Hebrew College Philadelphia, Pennsylvania
+        St. Joseph University Philadelphia, Pennsylvania
+       	Arcadia College Philadelphia, Pennsylvania
+		Muhlenberg College Allentown Pennsylvania
+		University of Manitoba, Winnipeg, Manitoba, Canada
+		Patten Bible College Oakland, California
+		The Lehrhaus UC Berkely, California**/
+                  
+
 	{
 		title: '', 
 		description: '',
@@ -137,7 +181,7 @@ export const publications = [
 	 	journal: '',
 	 	time: '2026',
 	 	link: '/antisemitism-and-the-tribe/1',
-	 	abstract: 'This publication offers the reader an accessible and chronological presentation of the history and development of this most unique of philosophies. What were the political influences on its development? How much impact did other cultures have? Learn and explore as you go along on this historical journey. Perfect for adult education sessions or Hebrew high school discussions.',
+	 	abstract: 'A historical examination of what it means to be a Jew.  Not just a religion or a nation but a familial relationship going back to its origins in the land of Israel. An extended family with feelings of kinship that does not obviate differences of opinions but celebrates them. An easy target for those who wish to hate someone or something because you will always be able to find some Jew who believes or does something you do not believe or hate.',
 		coverImage: ''
 	},
 	{

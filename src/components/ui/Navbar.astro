@@ -17,15 +17,15 @@ const {fullName, title, shortName} = profile
 		<div>
 			<div class='flex justify-center items-center flex-col px-4 py-10 lg:px-0 lg:py-0'>
 						<Image
-							class='mask mask-circle size-44 mb-4'
+							class='mask mask-circle size-40 mb-2'
 							src={ProfilePictures}
 							alt={`Profile picture of ${fullName}`}
 						/>
-						<h1 class="text-lg font-black mt-8 text-center"><span>{shortName}</span></h1>
+						<h1 class="text-lg font-black mt-4 text-center"><span>{shortName}</span></h1>
 						<p class="text-sm text-center text-base-content/70">{profile.slogan}</p>
 					</div>
 					
-			<div class='mx-4 mt-16'>
+			<div class='mx-4 mt-4'>
 				<ul class='space-y-4 menu grow shrink menu-md overflow-y-auto'>
 					<li>
                         <a href={`${template.base}/`} class='text-lg'>Home</a>
