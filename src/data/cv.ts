@@ -31,30 +31,44 @@ export const experiences = [
 	},
 	{	
 		company: 'Gratz Hebrew College',
+		time: '',	 
+		title: '',
 		location: 'Philadelphia, Pennsylvania',
 	},
 	{
 		company: 'St. Joseph University',
+		time: '',	 
+		title: '',
 		location: 'Philadelphia, Pennsylvania'
 	},
     {
        	company: 'Arcadia College',
+		time: '',	 
+		title: '',
 		location: 'Philadelphia, Pennsylvania'
 	},
 	{
        	company: 'Muhlenberg College',
+		time: '',	 
+		title: '',
 		location: 'Allentown, Pennsylvania'
 	},
 	{
 		company: 'University of Manitoba',
+		time: '',	 
+		title: '',
 		location: 'Winnipeg, Manitoba, Canada'
 	},
 	{
 		company: 'Patten Bible College',
+		time: '',	 
+		title: '',
 		location: 'Oakland, California'
 	},
 	{
 		company: 'The Lehrhaus UC Berkely',
+		time: '',	 
+		title: '',
 		location: 'Oakland, California'
 	},	
 
