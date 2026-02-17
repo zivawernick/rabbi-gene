@@ -91,11 +91,11 @@ if (publications.length > 0) {
 						.map((_, i) => languageskills.slice(i * perGroup, (i + 1) * perGroup));
 					
 					return skillGroups.map((group, idx) => (
-						<div class='mb-8' key={idx}>
+						    <div class='mb-8' key={String(idx)}>
 							<div class='grid grid-cols-3 gap-4'>
 								{group.map((skill) => (
-									<div class='border rounded-lg p-4 hover:shadow-md transition-shadow'>
-										<h3 class='font-semibold mb-2'>{skill.title || skill.name}</h3>
+									<div class='border rounded-lg p-4 hover:shadow-md transition-shadow' key={skill.title}>
+										<h3 class='font-semibold mb-2'>{skill.title}</h3>
 										<p class='text-sm text-gray-600'>{skill.description}</p>
 									</div>
 								))}
