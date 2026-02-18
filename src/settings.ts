@@ -14,9 +14,7 @@ export const profile = {
 export const social = {
 	email: 'rabbigenew@gmail.com',
 	linkedin: 'https://www.linkedin.com/in/eugene-wernick-29132894/',
-	scholar: '',
-	arxiv: '',
-	orcid: '',
+	youtube: 'https://www.youtube.com/@MythsMinyansMidrashot/',
 }
 
 export const template = {
