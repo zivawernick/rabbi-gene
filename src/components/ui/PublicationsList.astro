@@ -59,18 +59,45 @@ const { elements } = Astro.props
     position: relative;
     padding-left: 11em; /* Adjusted for 10em image width + 1em spacing */
     padding-bottom: 5em;
-    margin-right: -2em; 
+    margin-right: -2em;
   }
 
   .custom-publication-list > .custom-publication-item::before {
     content: '';
     position: absolute;
-    left: -3em; /* Adjusted to pull image further left */
-    top: -0.2em; /* Adjusted for vertical alignment with title */
-    width: 13em;  /* Desired image width */
-    height: 17em; /* Desired image height */
-    background-image: var(--cover-image, url('/src/assets/Gateway-to-the-kabbalah-cover.png'));
+    left: -3em;
+    top: -0.2em;
+    width: 13em;  /* Default for larger screens */
+    height: 17em; /* Default for larger screens */
+    background-image: var(--cover-image);
     background-size: cover;
     background-repeat: no-repeat;
+    /* Ensure image scales with its container */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 13 / 17; /* Maintain aspect ratio */
+  }
+
+  /* Media query for smaller screens (e.g., mobile) */
+  @media (max-width: 768px) {
+    .custom-publication-list > .custom-publication-item {
+      padding-left: 0; /* Remove padding on small screens */
+      padding-bottom: 2em; /* Adjust bottom padding */
+      margin-right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .custom-publication-list > .custom-publication-item::before {
+      position: static; /* Make it part of the normal flow */
+      width: 60%; /* Adjust width for mobile */
+      height: auto; /* Let height adjust based on aspect ratio */
+      margin-bottom: 1em; /* Space between image and text */
+      left: auto; /* Remove fixed left positioning */
+      top: auto; /* Remove fixed top positioning */
+    }
   }
 </style>
