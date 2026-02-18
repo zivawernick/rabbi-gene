@@ -1,4 +1,5 @@
 ---
+import Youtube from '@/assets/social-icons/youtube-com.svg'
 import Envelope from '@/assets/social-icons/envelope.svg'
 import LinkedIn from '@/assets/social-icons/linkedin-in.svg'
 import { social } from '@/settings'
@@ -32,7 +33,7 @@ const calculatedContainerSize = activeSocial.length <= 5 ? 'size-12' : activeSoc
 			<Scholar class={calculatedIconSize} fill="currentColor" />
 		</a>
 	}-->
-	<!-- Youtube -->
+	<!-- Youtube-->
 	{social.youtube !== '' &&
 		<a href={social.youtube} target="_blank" class={`${calculatedContainerSize} inline-flex items-center justify-center rounded-xl hover:bg-primary/20 transition-all duration-300`}>
 			<Youtube class={calculatedIconSize} fill="currentColor" />
