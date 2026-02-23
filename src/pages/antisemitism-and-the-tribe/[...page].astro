@@ -6,7 +6,9 @@ import { template } from '@/settings'
 import { getCollection } from 'astro:content'
 
 export async function getStaticPaths({ paginate }): Promise<Astro.getStaticPathsResult> {
-    const blogEntries = await getCollection("book2");
+    const blogEntries = await getCollection("book2", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
 
     const posts = blogEntries
         .map(post => ({
@@ -15,6 +17,7 @@ export async function getStaticPaths({ paginate }): Promise<Astro.getStaticPaths
             badge: post.data.tags?.[0] || 'Uncategorized',
             excerpt: trimExcerpt(post.data.excerpt),
             slug: `${template.base}/antisemitism-and-the-tribe/${post.id}`,
+			draft: post.data.draft || false,
         }))
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
