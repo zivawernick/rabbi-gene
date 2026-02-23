@@ -15,6 +15,7 @@ const blog = defineCollection({
         date: z.string(),
         excerpt: z.string(),
         tags: z.array(z.string()).optional(),
+        draft: z.boolean().optional(),
     }),
 });
 
@@ -29,6 +30,7 @@ const book2 = defineCollection({
         excerpt: z.string(),
         tags: z.array(z.string()).optional(),
         slug: z.string().optional(),
+        draft: z.boolean().optional(),
     }),
 });
 
