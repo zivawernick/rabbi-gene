@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: corporate --default, forest --prefersdark;
+}
+
+@plugin "daisyui/theme" {
+  name: "corporate";
+  --radius-selector: 1rem;
+  --radius-field: 2rem;
+  --radius-box: 1rem;
+}
