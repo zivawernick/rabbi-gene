@@ -3,3 +3,10 @@
 @plugin "daisyui" {
   themes: all;
 }
+
+@plugin "daisyui/theme" {
+  name: "corporate";
+  --radius-selector: 1rem;
+  --radius-field: 2rem;
+  --radius-box: 1rem;
+}
