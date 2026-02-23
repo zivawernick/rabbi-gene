@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
-  themes: all;
+  themes: corporate --default, forest --prefersdark;
 }
 
 @plugin "daisyui/theme" {
