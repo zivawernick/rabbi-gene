@@ -6,9 +6,7 @@ import { template } from '@/settings'
 import { getCollection } from 'astro:content'
 
 export async function getStaticPaths({ paginate }): Promise<Astro.getStaticPathsResult> {
-  const blogEntries = await getCollection("book2", ({ data }) => {
-    return import.meta.env.SHOW_DRAFTS === "true" ? true : data.draft !== true;
-  });
+    const blogEntries = await getCollection("book2");
 
 
     const posts = blogEntries
