@@ -93,12 +93,34 @@ const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
                 <Content />
 			</div>
 
-			<!-- Next Chapter Button -->
-			{nextPost && (
-				<div class='mt-12 text-center'>
+			<!-- Navigation Buttons -->
+			<div class='mt-12 flex flex-col sm:flex-row justify-center gap-4'>
+				{prevPost && (
+					<a
+						href={`/antisemitism-and-the-tribe/${prevPost.id}`}
+						class='inline-flex items-center justify-center px-6 py-3 bg-accent text-accent-content font-semibold rounded-lg hover:bg-accent-focus transition-colors duration-200'
+					>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							class='h-5 w-5 mr-2'
+							fill='none'
+							viewBox='0 0 24 24'
+							stroke='currentColor'
+						>
+							<path
+								stroke-linecap='round'
+								stroke-linejoin='round'
+								stroke-width='2'
+								d='M15 19l-7-7 7-7'
+							/>
+						</svg>
+						Previous Chapter: {prevPost.data.title}
+					</a>
+				)}
+				{nextPost && (
 					<a
 						href={`/antisemitism-and-the-tribe/${nextPost.id}`}
-						class='inline-flex items-center px-6 py-3 bg-accent text-accent-content font-semibold rounded-lg hover:bg-accent-focus transition-colors duration-200'
+						class='inline-flex items-center justify-center px-6 py-3 bg-accent text-accent-content font-semibold rounded-lg hover:bg-accent-focus transition-colors duration-200'
 					>
 						Next Chapter: {nextPost.data.title}
 						<svg
@@ -116,33 +138,8 @@ const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 							/>
 						</svg>
 					</a>
-				</div>
-			)}
-			<!-- Previous Chapter Button -->
-			{prevPost && (
-				<div class='mt-12 text-center'>
-					<a
-						href={`/antisemitism-and-the-tribe/${prevPost.id}`}
-						class='inline-flex items-center px-6 py-3 bg-accent text-accent-content font-semibold rounded-lg hover:bg-accent-focus transition-colors duration-200'
-					>
-						Previous Chapter: {prevPost.data.title}
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							class='h-5 w-5 ml-2'
-							fill='none'
-							viewBox='0 0 24 24'
-							stroke='currentColor'
-						>
-							<path
-								stroke-linecap='round'
-								stroke-linejoin='round'
-								stroke-width='2'
-								d='M9 5l7 7-7 7'
-							/>
-						</svg>
-					</a>
-				</div>
-			)}
+				)}
+			</div>
 		</article>
 	</div>
 </Layout>
