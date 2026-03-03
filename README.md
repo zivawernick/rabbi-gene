@@ -55,9 +55,7 @@ npm run preview
 
 ## Deployment
 
-The site is configured for deployment via **Cloudflare Workers/Pages** using Wrangler.
+The site is configured for deployment via **Cloudflare Workers CI/CD** using Wrangler.
 - **Configuration:** Managed in `wrangler.toml`.
-- **Command:** `npx wrangler pages deploy dist` (after running `npm run build`).
 
----
 *Based on the [Astro Academia](https://github.com/maiobarbero/astro_academia) template.*
