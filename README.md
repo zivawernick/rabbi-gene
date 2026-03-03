@@ -1,106 +1,63 @@
-# Astro Academia Documentation
+# Rabbi Gene Wernick - Personal & Academic Website
 
-## What is Astro Academia?
+This is the personal academic and professional website for Rabbi Eugene (Gene) Wernick, built with Astro. The site serves as a hub for his blog, research, publications, and professional history.
 
-Astro Academia is a personal academic website built using Astro, a modern static site generator. The website is designed to showcase academic achievements, research papers, blog posts, and a CV. It is fast, responsive, and easy to maintain, making it an ideal platform for academics and researchers to present their work.
+## Key Features
 
-If you find Astro Academia useful or appreciate my work, consider supporting me! Your support helps keep this project maintained and encourages further development. 🚀✨
+- **Dual Content Collections:** A standard blog for general updates and a specialized, chapter-based publication for serialized content.
+- **Academic CV:** A fully dynamic CV page driven by structured TypeScript data.
+- **Modern Tech Stack:** Built with Astro 5, MDX, Tailwind CSS 4, DaisyUI 5, and React.
+- **Fast & Responsive:** Optimized for performance and readability across all devices.
 
-<a href="https://buymeacoffee.com/maiobarbero" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-yellow.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-<a href="https://www.producthunt.com/products/astro-academia?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-astro&#0045;academia" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1026976&theme=light&t=1760776422941" alt="Astro&#0032;Academia - Academic&#0032;website&#0032;template | Product Hunt" style="width: 189px; height: 41px;" width="189" height="41" /></a>
+## Content Management
 
-### Demo
-You can see Astro Academia at the following link: <a href="https://maiobarbero.github.io/astro_academia/" target="_blank">demo page</a>
+### 1. General Blog (`blog`)
+The main blog is located in `src/content/BlogPosts/`. Posts are written in Markdown or MDX.
+- **Route:** `/blog/[slug]`
+- **Adding Posts:** Create a new `.md` or `.mdx` file in the `BlogPosts` directory.
 
-## How to use it
+### 2. Specialized Publication (`book2`)
+The "Antisemitism and the Tribe" publication functions as a second blog/book collection. It is designed for sequential reading with chapter navigation.
+- **Content Location:** `src/content/book2/`
+- **Route:** `/antisemitism-and-the-tribe/[slug]`
+- **Format:** Supports chapters (e.g., `chapter1.mdx`, `chapter2.mdx`) with metadata like `title`, `date`, and `excerpt`.
 
-Fork this repository to create your new website starting from this template.
+### 3. Profile & Global Settings
+Site-wide settings such as your name, social links, and theme preferences are managed in `src/settings.ts`.
+- **`profile`**: Manage your name, slogan, and research interests.
+- **`social`**: Update your email, LinkedIn, and YouTube links.
+- **`template`**: Configure the website URL and DaisyUI themes (`lightTheme`, `darkTheme`).
 
-## How to Create a CV Using the `cv.ts` File
+### 4. CV & Professional Data
+Your professional history, education, and full list of publications are managed in `src/data/cv.ts`.
+- **`experiences`**: Add or update your rabbinical and teaching positions.
+- **`education`**: Update your degrees and certifications.
+- **`languageskills`**: List the languages you speak and your proficiency levels.
+- **`publications`**: Manage the list of your published works, including links and cover images.
 
-The `cv.ts` file located in the `src/data/` directory is used to define the structure and content of your CV. This file exports an object containing various sections of your CV, such as education, experience, publications, and more.
+## Development
 
-### Example Structure of `cv.ts`
+### Prerequisites
+- Node.js (Version specified in `.nvmrc`)
+- npm
 
-```typescript
-export const cv = {
-  education: [
-    {
-      degree: "Ph.D. in Computer Science",
-      institution: "University of Example",
-      year: "2020",
-    },
-    {
-      degree: "M.Sc. in Computer Science",
-      institution: "University of Example",
-      year: "2016",
-    },
-  ],
-  experience: [
-    {
-      title: "Research Scientist",
-      company: "Example Research Lab",
-      year: "2021-Present",
-    },
-    {
-      title: "Software Engineer",
-      company: "Tech Company",
-      year: "2016-2021",
-    },
-  ],
-  // Add more sections as needed
-};
+### Local Development
+```bash
+npm install
+npm run dev
 ```
 
-To create or update your CV, modify the `cv.ts` file with your personal information and achievements. The CV will be automatically rendered on the CV page of your website.
-
-## How to Use the `settings.ts` File
-
-The `settings.ts` file located in the `src/` directory is used to configure various settings for your Astro Academia website. This file exports an object containing settings such as site title, description, social media links, and more.
-
-### Example Structure of `settings.ts`
-
-```typescript
-export const settings = {
-  siteTitle: "Astro Academia",
-  siteDescription: "A personal academic website built with Astro.",
-  socialLinks: {
-    twitter: "https://twitter.com/yourusername",
-    github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
-  },
-  // Add more settings as needed
-};
+### Build & Preview
+```bash
+npm run build
+npm run preview
 ```
 
-To customize your website settings, modify the `settings.ts` file with your desired values. These settings will be used throughout your website to display the appropriate information.
+## Deployment
 
-## Where to Find the Blog Collection and Where to Add New Blog Posts
+The site is configured for deployment via **Cloudflare Workers/Pages** using Wrangler.
+- **Configuration:** Managed in `wrangler.toml`.
+- **Command:** `npx wrangler pages deploy dist` (after running `npm run build`).
 
-The blog collection is located in the `src/content/BlogPosts/` directory. Each blog post is a Markdown file with a `.md` extension. The blog posts are named sequentially (e.g., `post1.md`, `post2.md`, etc.).
-
-### Adding a New Blog Post
-
-1. Navigate to the `src/content/BlogPosts/` directory.
-2. Create a new Markdown file for your blog post (e.g., `post1.md`).
-3. Add the content of your blog post using Markdown syntax. Include frontmatter at the top of the file to define metadata such as title, date, and tags.
-
-### Example Blog Post (`post11.md`)
-
-```markdown
 ---
-title: "New Blog Post"
-date: "2023-10-01"
-tags: ["research", "astro"]
-excerpt: "Some short paragraphs"
----
-
-# New Blog Post
-
-This is the content of the new blog post. Write your article here using Markdown syntax.
-```
-
-Once you have added the new blog post, it will be automatically included in the blog collection and displayed on the blog page of your website.
-
-## Deploy
-The template provides a workflow to deploy the website on Github pages as a static website.
+*Based on the [Astro Academia](https://github.com/maiobarbero/astro_academia) template.*
