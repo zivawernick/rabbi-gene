@@ -125,10 +125,9 @@ const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 						href={`/antisemitism-and-the-tribe/${prevPost.id}`}
 						class='inline-flex items-center px-6 py-3 bg-accent text-accent-content font-semibold rounded-lg hover:bg-accent-focus transition-colors duration-200'
 					>
-						Previous Chapter: {prevPost.data.title}
 						<svg
 							xmlns='http://www.w3.org/2000/svg'
-							class='h-5 w-5 ml-2'
+							class='h-5 w-5 mr-2'
 							fill='none'
 							viewBox='0 0 24 24'
 							stroke='currentColor'
@@ -137,9 +136,10 @@ const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 								stroke-linecap='round'
 								stroke-linejoin='round'
 								stroke-width='2'
-								d='M9 5l7 7-7 7'
+								d='M15 19l-7-7 7-7'
 							/>
 						</svg>
+						Previous Chapter: {prevPost.data.title}
 					</a>
 				</div>
 			)}
