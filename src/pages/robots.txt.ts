@@ -1,5 +1,5 @@
-import type { APIRoute } from 'astro';
-import {template} from '@/settings';
+import type { APIRoute } from "astro";
+import { template } from "@/settings";
 
 const getRobotsTxt = (sitemapURL: URL) => `
 User-agent: *
@@ -9,7 +9,7 @@ Sitemap: ${sitemapURL.href}
 `;
 
 export const GET: APIRoute = ({ site }) => {
-const base = template.base ? template.base + '/' : '';
+  const base = template.base ? template.base + "/" : "";
   const sitemapURL = new URL(`${base}sitemap-index.xml`, site);
   return new Response(getRobotsTxt(sitemapURL));
 };
