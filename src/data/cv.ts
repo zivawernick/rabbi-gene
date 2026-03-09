@@ -96,15 +96,6 @@ export const education = [
 
 export const skills = [
 
-	/** Gratz Hebrew College Philadelphia, Pennsylvania
-        St. Joseph University Philadelphia, Pennsylvania
-       	Arcadia College Philadelphia, Pennsylvania
-		Muhlenberg College Allentown Pennsylvania
-		University of Manitoba, Winnipeg, Manitoba, Canada
-		Patten Bible College Oakland, California
-		The Lehrhaus UC Berkely, California**/
-                  
-
 	{
 		title: '', 
 		description: '',
