@@ -1,5 +1,3 @@
-import { string } from "astro:schema";
-
 export const experiences = [
 	{
 		company: 'Or Olam',
