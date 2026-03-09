@@ -59,7 +59,7 @@ const { Content } = await render(post);
 					{
 						tags && (
 							<div class='flex flex-wrap gap-2'>
-								{tags.map(tag => (
+								{tags.map((tag: string) => (
 									<span class='badge badge-accent badge-outline'>{tag}</span>
 								))}
 							</div>

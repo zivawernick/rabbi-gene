@@ -4,8 +4,9 @@ import Layout from '@/layouts/Layout.astro'
 import { trimExcerpt } from '@/lib/utils'
 import { template } from '@/settings'
 import { getCollection } from 'astro:content'
+import type { PaginateFunction } from 'astro'
 
-export async function getStaticPaths({ paginate }): Promise<Astro.getStaticPathsResult> {
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
     const blogEntries = await getCollection("book2");
 
 
