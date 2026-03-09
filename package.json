@@ -7,7 +7,12 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "build:preview": "SHOW_DRAFTS=true astro build"
+    "build:preview": "SHOW_DRAFTS=true astro build",
+    "lint": "oxlint --type-aware --type-check .",
+    "lint:fix": "oxlint --type-aware --type-check . --fix",
+    "lint:fix-all": "oxlint --type-aware --type-check . --fix --fix-suggestions --fix-dangerously",
+    "format": "oxfmt .",
+    "format:check": "oxfmt . --check"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
@@ -26,6 +31,9 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
-    "daisyui": "^5.5.19"
+    "daisyui": "^5.5.19",
+    "oxfmt": "^0.36.0",
+    "oxlint": "^1.51.0",
+    "oxlint-tsgolint": "^0.16.0"
   }
 }
