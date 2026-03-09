@@ -15,7 +15,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   // Add mdx()
   integrations: [
-    react(), 
+    react(),
     sitemap(),
     mdx({
       remarkPlugins: [remarkGfm], // Add this
@@ -25,6 +25,5 @@ export default defineConfig({
   base: template.base,
   vite: {
     plugins: [tailwindcss()],
-    
   },
 });
