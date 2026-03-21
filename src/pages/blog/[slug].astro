@@ -33,7 +33,9 @@ const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 		>
 			<!-- Header section -->
 			<div class='mb-8 border-b pb-8'>
-				<h1 class='text-4xl font-bold mb-4 text-base-content'>{title}</h1>
+				<!-- <h1 class='text-4xl font-bold mb-4 text-base-content'>{title}</h1> -->
+				<h1 class='text-4xl font-bold mb-4 text-base-content' dir={/[\u0590-\u05FF]/.test(title) ? 'rtl' : 'ltr'}>
+  					{title}</h1>
 				<div class='flex flex-wrap items-center gap-4 text-base-content/70'>
 					<!-- Date -->
 					<time datetime={date} class='flex items-center'>
