@@ -5,9 +5,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "astro",
-    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
     "skipLibCheck": true
   }
