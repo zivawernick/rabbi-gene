@@ -3,9 +3,24 @@ import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout title="Join the Mailing List" description="Subscribe to Rabbi Gene Wernick's mailing list for personal updates, reflections, and announcements.">
-  <section class='max-w-2xl mx-auto -mt-8 lg:-mt-6 pb-12'>
+  <section class='w-full max-w-3xl mx-auto -mt-8 lg:-mt-6 pb-12'>
     <!-- Paste your Google Form iframe embed code below -->
-    <div class='w-full rounded-lg overflow-hidden border border-base-300'>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc8IxlcmXtcgOHM4j0cMjjE32ySF_oEqnp7YuHkikoLU5n5vA/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    <div class='form-wrapper rounded-lg overflow-hidden border border-base-300'>
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSc8IxlcmXtcgOHM4j0cMjjE32ySF_oEqnp7YuHkikoLU5n5vA/viewform?embedded=true"  
+        title="Subscribe to Rabbi Gene Wernick's Mailing List">
+        Loading…</iframe>
     </div>
   </section>
+<style>
+  .form-wrapper {
+  width: 100%;
+}
+
+.form-wrapper iframe {
+  width: 100%;
+  min-height: 950px;
+  border: none;
+  display: block;
+}
+</style>
