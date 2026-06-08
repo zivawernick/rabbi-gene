@@ -1,14 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro'
 
-import { profile } from '@/settings'
+import { profile, template } from '@/settings'
 import { publications } from '@/data/cv'
 import ProfilePictures from '@/assets/profile_pictures.jpg'
 import Hero from '@/components/ui/Hero.astro'
 import Grid from '@/components/ui/Grid.astro'
 import ArticleList from '@/components/ui/ArticleList.astro'
+import { getCollection } from 'astro:content'
 
 const { fullName, shortName, slogan, title, institute, research_areas } = profile
+
+const blogEntries = await getCollection('blog')
+const latestPost = blogEntries
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())[0]
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -31,6 +36,41 @@ const { fullName, shortName, slogan, title, institute, research_areas } = profil
 	<section class='py-12 border-b'>
 		<Grid gridTitle='Research Areas' gridItems={research_areas} />
 	</section> -->
+
+	<!-- Latest Blog Post -->
+	{latestPost && (
+		<section class='py-12 border-t'>
+			<h2 class='text-3xl font-bold mb-8'>Latest Blog Post</h2>
+			<article class='card bg-base-200'>
+				<div class='card-body'>
+					<div class='flex justify-between items-start'>
+						<h3 class='card-title text-xl'>
+							<a href={`${template.base}/blog/${latestPost.id}`} class='hover:text-accent'>
+								{latestPost.data.title}
+							</a>
+						</h3>
+						{latestPost.data.tags?.[0] && (
+							<div class='badge badge-accent badge-outline p-4'>
+								{latestPost.data.tags[0]}
+							</div>
+						)}
+					</div>
+					<time datetime={latestPost.data.date} class='text-sm text-base-content/71'>
+						{new Date(latestPost.data.date).toLocaleDateString('en-US', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})}
+					</time>
+					<div class='card-actions justify-end mt-4'>
+						<a href={`${template.base}/blog/${latestPost.id}`} class='btn btn-sm btn-secondary text-secondary-content'>
+							Read More
+						</a>
+					</div>
+				</div>
+			</article>
+		</section>
+	)}
 
 	<!-- Publications -->
 	<section class='py-12 border-t'>
