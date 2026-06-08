@@ -41,11 +41,13 @@ const { elements } = Astro.props
         {element.time}
       </p>
       <p>{element.abstract}</p>
-      <div class="card-actions justify-end mt-4">
-        <a href={element.link} class="btn btn-sm btn-secondary text-secondary-content">
-          {index === 0 ? 'Read Now' : 'Buy Book'}
-        </a>
-      </div>
+      {(element.link as string).startsWith('http') && (
+        <div class="card-actions justify-end mt-4">
+          <a href={element.link} class="btn btn-sm btn-secondary text-secondary-content">
+            Buy Book
+          </a>
+        </div>
+      )}
       </>
     }
     {/* Uncomment this line to add a small border bottom for each element
