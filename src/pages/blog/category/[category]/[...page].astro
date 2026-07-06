@@ -5,14 +5,16 @@ import Layout from '@/layouts/Layout.astro'
 import { trimExcerpt } from '@/lib/utils'
 import { template } from '@/settings'
 import { getCollection } from 'astro:content'
+import { CATEGORY_SLUGS, CATEGORY_LABELS } from '@/lib/blogCategories'
 
 export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
     const blogEntries = await getCollection("blog");
 
-    const posts = blogEntries
+    const mapped = blogEntries
         .map(post => ({
             title: post.data.title,
             date: post.data.date,
+            category: post.data.category,
             badge: post.data.topic ?? post.data.category ?? post.data.tags?.[0] ?? 'Uncategorized',
             excerpt: trimExcerpt(post.data.excerpt),
             slug: `${template.base}/blog/${post.id}`,
@@ -20,13 +22,24 @@ export async function getStaticPaths({ paginate }: { paginate: PaginateFunction 
         }))
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-    return paginate(posts, {
-        pageSize: template.postPerPage,
+    return Object.entries(CATEGORY_SLUGS).flatMap(([label, slug]) => {
+        const filtered = mapped.filter(post => post.category === label);
+        return paginate(filtered, {
+            pageSize: template.postPerPage,
+            params: { category: slug },
+        });
     });
 }
+
 const { page } = Astro.props
+const { category } = Astro.params
+const categoryLabel = CATEGORY_LABELS[category as string] ?? category
 ---
 
-<Layout title='Writings'>
-	<WritingsList page={page} activeCategory="all" basePath={`${template.base}/blog`} />
+<Layout title={`Writings - ${categoryLabel}`}>
+	<WritingsList
+		page={page}
+		activeCategory={category as string}
+		basePath={`${template.base}/blog/category/${category}`}
+	/>
 </Layout>
