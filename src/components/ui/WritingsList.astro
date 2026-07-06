@@ -1,0 +1,91 @@
+---
+import Pagination from './Pagination.astro'
+import { template } from '@/settings'
+import { CATEGORY_SLUGS } from '@/lib/blogCategories'
+
+interface WritingCard {
+	title: string
+	date: string
+	badge: string
+	excerpt: string
+	slug: string
+}
+
+interface Props {
+	page: {
+		data: WritingCard[]
+		currentPage: number
+		lastPage: number
+		url: { prev?: string; next?: string }
+	}
+	activeCategory: string
+	basePath: string
+}
+
+const { page, activeCategory, basePath } = Astro.props
+
+const tabs = [
+	{ label: 'All', slug: 'all', href: `${template.base}/blog` },
+	...Object.entries(CATEGORY_SLUGS).map(([label, slug]) => ({
+		label,
+		slug,
+		href: `${template.base}/blog/category/${slug}`,
+	})),
+]
+---
+
+<div>
+	<h1 class='text-3xl font-bold mb-8'>Writings</h1>
+
+	<div class='tabs tabs-boxed mb-8 inline-flex w-fit'>
+		{
+			tabs.map(tab => (
+				<a
+					href={tab.href}
+					class:list={['tab', { 'tab-active': activeCategory === tab.slug }]}
+				>
+					{tab.label}
+				</a>
+			))
+		}
+	</div>
+
+	<div class='grid gap-8'>
+		{
+			page.data.map(post => (
+				<article class='card bg-base-200 transition-all'>
+					<div class='card-body'>
+						<div class='flex justify-between items-start'>
+							<h2 class='card-title text-xl'>
+								<a href={post.slug} class='hover:text-accent'>
+									{post.title}
+								</a>
+							</h2>
+							<div class='badge badge-accent badge-outline p-4'>{post.badge}</div>
+						</div>
+						<time datetime={post.date} class='text-sm text-base-content/71'>
+							{new Date(post.date).toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})}
+						</time>
+						<p class='mt-4'>{post.excerpt}</p>
+						<div class='card-actions justify-end'>
+							<a
+								href={post.slug}
+								class='btn btn-sm btn-secondary text-secondary-content'
+							>
+								Read More
+							</a>
+						</div>
+					</div>
+				</article>
+			))
+		}
+	</div>
+
+	<div class='flex justify-center mt-8'>
+		<Pagination page={page} basePath={basePath} />
+	</div>
+</div>
