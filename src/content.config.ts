@@ -14,6 +14,8 @@ const blog = defineCollection({
     title: z.string(),
     date: z.string(),
     excerpt: z.string(),
+    category: z.enum(["Torah Portions & Holidays", "Commentary"]).optional(),
+    topic: z.enum(["Israel & Politics", "Antisemitism", "Peace & Reflection"]).optional(),
     tags: z.array(z.string()).optional(),
     draft: z.boolean().optional(),
   }),
