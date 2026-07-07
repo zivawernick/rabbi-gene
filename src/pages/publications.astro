@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { publications } from "@/data/cv";
 import PublicationsList from '@/components/ui/PublicationsList.astro';
 
-const ALL_PAPERS = publications; // This will be replaced with dynamic data on the 
+const ALL_PAPERS = publications; // This will be replaced with dynamic data on the
 ---
 
 <Layout title="Publications">
@@ -13,7 +13,7 @@ const ALL_PAPERS = publications; // This will be replaced with dynamic data on t
     <div class="overflow-visible">
       <PublicationsList elements={ALL_PAPERS} />
     </div>
-    
+
     <!--<div class="flex justify-center mt-8">
       <div class="join">
         <button class="join-item btn btn-sm">«</button>
@@ -23,6 +23,6 @@ const ALL_PAPERS = publications; // This will be replaced with dynamic data on t
         <button class="join-item btn btn-sm">»</button>
       </div>
     </div>-->
-    
+
   </div>
 </Layout>

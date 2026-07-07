@@ -17,7 +17,7 @@ export async function getStaticPaths(): Promise<Array<{ params: { slug: string }
     return posts
 }
 const {post} = Astro.props;
-const { title, date, tags} = post.data; 
+const { title, date, tags} = post.data;
 const { Content } = await render(post);
 
 // Get all posts and sort by date
