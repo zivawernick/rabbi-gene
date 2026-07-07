@@ -11,11 +11,11 @@ const { elements } = Astro.props
 ---
 <ul class='space-y-8 list-none custom-publication-list ml-10 mr-10'>
   {elements.map((element, index) => (
-    <li 
-    class='group custom-publication-item' 
+    <li
+    class='group custom-publication-item'
     id={slugify(element.title)}
-    style={!isSkill(element) && (element as Publication).coverImage 
-      ? `--cover-image: url(${(element as Publication).coverImage})` 
+    style={!isSkill(element) && (element as Publication).coverImage
+      ? `--cover-image: url(${(element as Publication).coverImage})`
       : ''}
     >
       { isSkill(element)
