@@ -7,7 +7,7 @@ const pageNumbers = Array.from({ length: page.lastPage }, (_, i) => i + 1)
   <a
         href={page.url.prev}
     class:list={["join-item btn btn-sm", { "btn-disabled": !page.url.prev }]}
-  >«</a>
+  >‹</a>
 
   {/* Page numbers */}
   {pageNumbers.map((n) => (
@@ -21,5 +21,5 @@ const pageNumbers = Array.from({ length: page.lastPage }, (_, i) => i + 1)
   <a
         href={page.url.next}
     class:list={["join-item btn btn-sm", { "btn-disabled": !page.url.next }]}
-  >»</a>
+  >›</a>
 </div>
