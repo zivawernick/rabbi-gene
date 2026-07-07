@@ -92,53 +92,62 @@ const prevPost = currentIndex > 0 ? sortedPosts[currentIndex - 1] : null;
 					>
                 <Content />
 		</div>
-			<!-- Navigation Buttons -->
-			<div class='mt-12 flex flex-col sm:flex-row justify-center gap-4'>
-				{prevPost && (
+			<!-- Navigation Cards -->
+			<div class='mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose'>
+				{prevPost ? (
 					<a
-						href={`/blog/${prevPost.id}`}
-						class='inline-flex items-center justify-center px-6 py-3 bg-accent text-accent-content font-semibold rounded-lg hover:bg-accent-focus transition-colors duration-200'
+						href={`${template.base}/blog/${prevPost.id}`}
+						class='card bg-base-200 hover:bg-base-300 transition-colors duration-200'
 					>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							class='h-5 w-5 mr-2'
-							fill='none'
-							viewBox='0 0 24 24'
-							stroke='currentColor'
-						>
-							<path
-								stroke-linecap='round'
-								stroke-linejoin='round'
-								stroke-width='2'
-								d='M15 19l-7-7 7-7'
-							/>
-						</svg>
-						Last Post: {prevPost.data.title}
+						<div class='card-body p-5'>
+							<span class='flex items-center text-sm text-base-content/70'>
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									class='h-4 w-4 mr-1'
+									fill='none'
+									viewBox='0 0 24 24'
+									stroke='currentColor'
+								>
+									<path
+										stroke-linecap='round'
+										stroke-linejoin='round'
+										stroke-width='2'
+										d='M15 19l-7-7 7-7'
+									/>
+								</svg>
+								Last Post:
+							</span>
+							<span class='font-semibold text-base-content'>{prevPost.data.title}</span>
+						</div>
 					</a>
-				)}
+				) : <div />}
 				{nextPost && (
 					<a
-						href={`/blog/${nextPost.id}`}
-						class='inline-flex items-center justify-center px-6 py-3 bg-accent text-accent-content font-semibold rounded-lg hover:bg-accent-focus transition-colors duration-200'
+						href={`${template.base}/blog/${nextPost.id}`}
+						class='card bg-base-200 hover:bg-base-300 transition-colors duration-200'
 					>
-						Next Post: {nextPost.data.title}
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							class='h-5 w-5 ml-2'
-							fill='none'
-							viewBox='0 0 24 24'
-							stroke='currentColor'
-						>
-							<path
-								stroke-linecap='round'
-								stroke-linejoin='round'
-								stroke-width='2'
-								d='M9 5l7 7-7 7'
-							/>
-						</svg>
+						<div class='card-body p-5 sm:items-end sm:text-right'>
+							<span class='flex items-center text-sm text-base-content/70'>
+								Next Post:
+								<svg
+									xmlns='http://www.w3.org/2000/svg'
+									class='h-4 w-4 ml-1'
+									fill='none'
+									viewBox='0 0 24 24'
+									stroke='currentColor'
+								>
+									<path
+										stroke-linecap='round'
+										stroke-linejoin='round'
+										stroke-width='2'
+										d='M9 5l7 7-7 7'
+									/>
+								</svg>
+							</span>
+							<span class='font-semibold text-base-content'>{nextPost.data.title}</span>
+						</div>
 					</a>
 				)}
-			
 			</div>
 		</article>
 	</div>
