@@ -5,6 +5,7 @@ import SocialIcons from './SocialIcons.astro'
 import ProfilePictures from '@/assets/profile_pictures.jpg'
 import { getCollection } from 'astro:content'
 import { template } from '@/settings'
+import { CATEGORY_SLUGS } from '@/lib/blogCategories'
 
 const isBlogPopulated = await getCollection('blog').then(collection => collection.length > 0)
 
@@ -42,7 +43,19 @@ const {fullName, title, shortName} = profile
                         <a href={`${template.base}/cv`} class='text-lg'>CV</a>
                     </li>
 					<li>
-						<a href={`${template.base}/blog`} class='text-lg'>Writings</a>
+						<details>
+							<summary class='text-lg'>Writings</summary>
+							<ul>
+								<li>
+									<a href={`${template.base}/blog`}>All Writings</a>
+								</li>
+								{Object.entries(CATEGORY_SLUGS).map(([label, slug]) => (
+									<li>
+										<a href={`${template.base}/blog/category/${slug}`}>{label}</a>
+									</li>
+								))}
+							</ul>
+						</details>
 					</li>
 					<li>
 						<a href={`${template.base}/subscribe`} class='btn btn-secondary btn-sm text-sm mt-2'>Subscribe</a>
