@@ -49,13 +49,25 @@ Your professional history, education, and full list of publications are managed 
 
 - Node.js (Version specified in `.nvmrc`)
 - npm
+- [prek](https://github.com/j178/prek) (pre-commit hook manager) and [gitleaks](https://github.com/gitleaks/gitleaks), installed system-wide
 
 ### Local Development
 
 ```bash
 npm install
+prek install   # one-time: installs the git pre-commit hook
 npm run dev
 ```
+
+### Pre-commit Hooks
+
+Hooks are defined in `.pre-commit-config.yaml` and run automatically on every commit after `prek install`:
+
+- Whitespace and end-of-file cleanup (Markdown two-space line breaks are preserved)
+- Merge-conflict marker, YAML/JSON syntax, and large-file checks
+- **gitleaks** secret scanning on staged changes
+
+Run them manually across the whole repo with `prek run --all-files`.
 
 ### Build & Preview
 
