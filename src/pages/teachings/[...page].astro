@@ -1,0 +1,40 @@
+---
+import TeachingsList from "@/components/ui/TeachingsList.astro";
+import type { PaginateFunction } from "astro";
+import Layout from "@/layouts/Layout.astro";
+import { trimExcerpt } from "@/lib/utils";
+import { template } from "@/settings";
+import { getTeachings } from "@/lib/teachings";
+
+export async function getStaticPaths({ paginate }: { paginate: PaginateFunction }) {
+  const teachings = await getTeachings();
+
+  const cards = teachings.map((teaching) => ({
+    title: teaching.data.title,
+    date: teaching.data.date,
+    category: teaching.data.category,
+    excerpt: trimExcerpt(teaching.data.excerpt),
+    slug: `${template.base}/teachings/${teaching.id}`,
+    isVideo: Boolean(teaching.data.youtubeId),
+    duration: teaching.data.duration,
+    cover: teaching.data.cover,
+    coverAlt: teaching.data.coverAlt,
+  }));
+
+  // With no visible teachings (e.g. a production build while everything is
+  // still draft) paginate() would emit no routes at all — keep /teachings
+  // alive with an empty state instead.
+  if (cards.length === 0) {
+    return [{ params: { page: undefined }, props: { page: null } }];
+  }
+
+  return paginate(cards, {
+    pageSize: template.postPerPage,
+  });
+}
+const { page } = Astro.props;
+---
+
+<Layout title="Teachings">
+  <TeachingsList page={page} basePath={`${template.base}/teachings`} />
+</Layout>
