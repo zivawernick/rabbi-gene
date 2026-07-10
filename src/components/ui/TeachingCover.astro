@@ -1,0 +1,80 @@
+---
+import { profile } from "@/settings";
+
+interface Props {
+  title: string;
+  category?: string | undefined;
+  isVideo?: boolean;
+  cover?: string | undefined;
+  coverAlt?: string | undefined;
+}
+
+const { title, category, isVideo = false, cover, coverAlt } = Astro.props;
+
+// Fixed book-jacket palette — deliberately not theme tokens, so covers read
+// the same on both the light and dark site themes.
+const jackets: Record<string, string> = {
+  "Torah Portions & Holidays": "#1e3a5f", // deep blue
+  Commentary: "#5b1f23", // oxblood
+};
+const jacketColor = jackets[category ?? ""] ?? "#475569"; // slate fallback
+---
+
+{
+  cover ? (
+    <img
+      src={cover}
+      alt={coverAlt ?? title}
+      loading="lazy"
+      class="aspect-[3/4] w-full object-cover"
+    />
+  ) : (
+    <div
+      class="aspect-[3/4] w-full flex flex-col p-5 text-[#f2ede3]"
+      style={`background: radial-gradient(120% 90% at 85% 8%, rgba(255,255,255,0.12), transparent 55%), ${jacketColor};`}
+    >
+      <p class="text-[0.65rem] uppercase tracking-[0.18em] opacity-75">
+        {category ?? "Teaching"}
+      </p>
+      <div class="flex-1 flex items-center">
+        <p
+          class="text-xl leading-snug text-balance"
+          style="font-family: Georgia, 'Times New Roman', serif;"
+          dir={/[\u0590-\u05FF]/.test(title) ? "rtl" : "ltr"}
+        >
+          {title}
+        </p>
+      </div>
+      <div class="flex items-center justify-between">
+        <p class="text-xs opacity-75">{profile.shortName}</p>
+        {isVideo ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 opacity-75"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M10 8.5v7l6-3.5z" fill="currentColor" stroke="none" />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 opacity-75"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            aria-hidden="true"
+          >
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V4H6.5A2.5 2.5 0 0 0 4 6.5v13z" />
+            <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5" />
+          </svg>
+        )}
+      </div>
+    </div>
+  )
+}
