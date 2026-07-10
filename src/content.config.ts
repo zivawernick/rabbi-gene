@@ -21,6 +21,32 @@ const blog = defineCollection({
   }),
 });
 
+const teachings = defineCollection({
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "./src/content/Teachings",
+  }),
+  schema: z.object({
+    title: z.string(),
+    date: z.string(),
+    excerpt: z.string(),
+    // Present = video teaching ("Watch"); absent = written lesson ("Read")
+    youtubeId: z.string().optional(),
+    duration: z.string().optional(),
+    category: z.enum(["Torah Portions & Holidays", "Commentary"]).optional(),
+    topic: z
+      .enum(["Israel & Politics", "Antisemitism", "Peace & Reflection"])
+      .optional(),
+    tags: z.array(z.string()).optional(),
+    // Optional card image (path under public/). Without one the card renders a
+    // generated "jacket" — most videos share a near-identical Zoom thumbnail,
+    // so real stills are not usable as cover art.
+    cover: z.string().optional(),
+    coverAlt: z.string().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 const book2 = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdx}",
@@ -37,4 +63,4 @@ const book2 = defineCollection({
 });
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { blog, book2 };
+export const collections = { blog, teachings, book2 };
