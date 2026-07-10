@@ -1,0 +1,201 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import YouTubeEmbed from "@/components/ui/YouTubeEmbed.astro";
+import { template } from "@/settings";
+import { getTeachings, type Teaching } from "@/lib/teachings";
+import { render } from "astro:content";
+
+export async function getStaticPaths(): Promise<
+  Array<{ params: { slug: string }; props: { teaching: Teaching } }>
+> {
+  const teachings = await getTeachings();
+  return teachings.map((teaching) => ({
+    params: { slug: teaching.id },
+    props: { teaching },
+  }));
+}
+
+const { teaching } = Astro.props;
+const { title, date, category, tags, youtubeId, cover } = teaching.data;
+const { Content } = await render(teaching);
+
+const sortedAsc = (await getTeachings()).slice().sort(
+  (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
+);
+const currentIndex = sortedAsc.findIndex((t) => t.id === teaching.id);
+const prevTeaching = currentIndex > 0 ? sortedAsc[currentIndex - 1] : null;
+const nextTeaching =
+  currentIndex < sortedAsc.length - 1 ? sortedAsc[currentIndex + 1] : null;
+---
+
+<Layout title={title}>
+  <div class="max-w-4xl mx-auto">
+    <article
+      class="prose max-w-none prose-headings:text-base-content prose-p:text-base-content/80"
+    >
+      {
+        youtubeId && (
+          <div class="mb-8 not-prose">
+            <YouTubeEmbed youtubeId={youtubeId} title={title} poster={cover} />
+          </div>
+        )
+      }
+
+      <!-- Header section -->
+      <div class="mb-8 border-b pb-8">
+        <h1
+          class="text-4xl font-bold mb-4 text-base-content"
+          dir={/[\u0590-\u05FF]/.test(title) ? "rtl" : "ltr"}
+        >
+          {title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-4 text-base-content/70">
+          <time datetime={date} class="flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
+            </svg>
+            {
+              new Date(date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            }
+          </time>
+
+          {
+            (category || tags) && (
+              <div class="flex flex-wrap gap-2">
+                {category && (
+                  <span class="badge badge-accent badge-outline">{category}</span>
+                )}
+                {tags?.map((tag: string) => (
+                  <span class="badge badge-accent badge-outline">{tag}</span>
+                ))}
+              </div>
+            )
+          }
+        </div>
+      </div>
+
+      <!-- Teaching content: written intro, then (for videos) the transcript
+           inside a collapsible <details class="transcript"> carried in the
+           MDX body itself -->
+      <div
+        class="prose mt-8 prose-h2:text-2xl prose-h2:font-bold prose-h2:mb-4
+          prose-h3:text-xl prose-h3:font-semibold prose-h3:mb-3
+          prose-p:mb-4 prose-p:leading-relaxed
+          prose-strong:text-base-content prose-strong:font-bold
+          prose-em:italic
+          prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+          prose-blockquote:border-l-4 prose-blockquote:border-accent prose-blockquote:pl-4 prose-blockquote:italic
+          prose-ul:list-disc prose-ul:pl-6
+          prose-ol:list-decimal prose-ol:pl-6
+          prose-li:mb-2
+          prose-img:rounded-lg prose-img:my-8"
+      >
+        <Content />
+      </div>
+
+      <!-- Navigation Cards -->
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 not-prose">
+        {
+          prevTeaching ? (
+            <a
+              href={`${template.base}/teachings/${prevTeaching.id}`}
+              class="card bg-base-200 hover:bg-base-300 transition-colors duration-200"
+            >
+              <div class="card-body p-5">
+                <span class="flex items-center text-sm text-base-content/70">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 mr-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 19l-7-7 7-7"
+                    />
+                  </svg>
+                  Last Teaching:
+                </span>
+                <span class="font-semibold text-base-content">
+                  {prevTeaching.data.title}
+                </span>
+              </div>
+            </a>
+          ) : (
+            <div />
+          )
+        }
+        {
+          nextTeaching && (
+            <a
+              href={`${template.base}/teachings/${nextTeaching.id}`}
+              class="card bg-base-200 hover:bg-base-300 transition-colors duration-200"
+            >
+              <div class="card-body p-5 sm:items-end sm:text-right">
+                <span class="flex items-center text-sm text-base-content/70">
+                  Next Teaching:
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4 ml-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </span>
+                <span class="font-semibold text-base-content">
+                  {nextTeaching.data.title}
+                </span>
+              </div>
+            </a>
+          )
+        }
+      </div>
+    </article>
+  </div>
+</Layout>
+
+<style is:global>
+  /* Option A: transcript folded into a native <details> written in the MDX
+     body — no JS, indexed by search engines, auto-expanded by Ctrl+F. */
+  article details.transcript {
+    border: 1px solid var(--color-base-300);
+    border-radius: var(--radius-box, 1rem);
+    background: var(--color-base-200);
+    padding: 0 1.25rem;
+    margin-top: 2rem;
+  }
+  article details.transcript summary {
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.9rem 0;
+    color: var(--color-base-content);
+  }
+  article details.transcript[open] {
+    padding-bottom: 1rem;
+  }
+</style>
