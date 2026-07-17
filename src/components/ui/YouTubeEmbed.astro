@@ -1,0 +1,67 @@
+---
+interface Props {
+  youtubeId: string;
+  title: string;
+  poster?: string | undefined;
+}
+
+const { youtubeId, title, poster } = Astro.props;
+const posterSrc = poster ?? `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+---
+
+<button
+  type="button"
+  class="youtube-facade group relative block w-full aspect-video overflow-hidden rounded-xl bg-black"
+  data-youtube-id={youtubeId}
+  data-video-title={title}
+  aria-label={`Play video: ${title}`}
+>
+  <img
+    src={posterSrc}
+    alt=""
+    loading="lazy"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+  <span class="absolute inset-0 grid place-items-center">
+    <span
+      class="grid h-16 w-16 place-items-center rounded-full border-2 border-white/85 bg-black/50 transition-transform motion-safe:group-hover:scale-110"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="ml-1 h-7 w-7 fill-white"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M8 5v14l11-7z"></path>
+      </svg>
+    </span>
+  </span>
+</button>
+
+<script>
+  // The real iframe is only injected on click, keeping YouTube's scripts off
+  // the initial page load. Delegated at document level so it keeps working
+  // across ClientRouter page transitions without re-binding.
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const facade = target.closest(".youtube-facade");
+    if (!(facade instanceof HTMLElement)) return;
+    const youtubeId = facade.dataset.youtubeId;
+    if (!youtubeId) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "relative block w-full aspect-video overflow-hidden rounded-xl bg-black";
+
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1`;
+    iframe.title = facade.dataset.videoTitle ?? "YouTube video";
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+    iframe.className = "absolute inset-0 h-full w-full border-0";
+
+    wrapper.appendChild(iframe);
+    facade.replaceWith(wrapper);
+  });
+</script>

@@ -6,8 +6,11 @@ import ProfilePictures from '@/assets/profile_pictures.jpg'
 import { getCollection } from 'astro:content'
 import { template } from '@/settings'
 import { CATEGORY_SLUGS } from '@/lib/blogCategories'
+import { getTeachings } from '@/lib/teachings'
 
 const isBlogPopulated = await getCollection('blog').then(collection => collection.length > 0)
+// Visible teachings only: drafts count in dev/preview builds, not production
+const isTeachingsPopulated = await getTeachings().then(teachings => teachings.length > 0)
 
 const {fullName, title, shortName} = profile
 ---
@@ -57,6 +60,11 @@ const {fullName, title, shortName} = profile
 							</ul>
 						</details>
 					</li>
+					{isTeachingsPopulated && (
+						<li>
+							<a href={`${template.base}/teachings`} class='text-lg'>Teachings</a>
+						</li>
+					)}
 					<li>
 						<a href={`${template.base}/subscribe`} class='btn btn-secondary btn-sm text-sm mt-2'>Subscribe</a>
 					</li>

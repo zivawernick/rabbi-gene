@@ -1,0 +1,102 @@
+---
+import Pagination from "./Pagination.astro";
+import TeachingCover from "./TeachingCover.astro";
+import { social } from "@/settings";
+
+interface TeachingCard {
+  title: string;
+  date: string;
+  category?: string | undefined;
+  excerpt: string;
+  slug: string;
+  isVideo: boolean;
+  duration?: string | undefined;
+  cover?: string | undefined;
+  coverAlt?: string | undefined;
+}
+
+interface Props {
+  page: {
+    data: TeachingCard[];
+    currentPage: number;
+    lastPage: number;
+    url: { prev?: string; next?: string };
+  } | null;
+  basePath: string;
+}
+
+const { page, basePath } = Astro.props;
+const isEmpty = !page || page.data.length === 0;
+---
+
+<div>
+  <h1 class="text-3xl font-bold mb-2">Teachings</h1>
+  <p class="text-base-content/70 mb-8">
+    Sermons and lessons from <span class="italic">Myths, Minyans and Midrashot</span>.
+  </p>
+
+  {
+    isEmpty ? (
+      <div class="min-h-[40vh] flex flex-col items-center justify-center text-center gap-4">
+        <p class="text-lg text-base-content/80">
+          Teachings are on their way. In the meantime, the videos live on the
+          YouTube channel.
+        </p>
+        <a href={social.youtube} class="btn btn-primary text-primary-content">
+          Visit the YouTube Channel
+        </a>
+      </div>
+    ) : (
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {page.data.map((teaching) => (
+          <article class="card bg-base-200 overflow-hidden transition-all hover:shadow-lg">
+            <a href={teaching.slug} class="relative block">
+              <TeachingCover
+                title={teaching.title}
+                category={teaching.category}
+                isVideo={teaching.isVideo}
+                cover={teaching.cover}
+                coverAlt={teaching.coverAlt}
+              />
+              {teaching.isVideo && teaching.duration && (
+                <span class="absolute top-3 right-3 rounded-full bg-black/60 px-2.5 py-0.5 text-xs text-white">
+                  ▶ {teaching.duration}
+                </span>
+              )}
+            </a>
+            <div class="card-body">
+              {teaching.cover && (
+                <h2 class="card-title text-xl">
+                  <a href={teaching.slug} class="hover:text-accent">
+                    {teaching.title}
+                  </a>
+                </h2>
+              )}
+              <time datetime={teaching.date} class="text-sm text-base-content/70">
+                {new Date(teaching.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+              <p class="mt-2">{teaching.excerpt}</p>
+              <div class="card-actions justify-end mt-2">
+                <a href={teaching.slug} class="btn btn-sm btn-secondary text-secondary-content">
+                  {teaching.isVideo ? "Watch" : "Read"}
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    !isEmpty && (
+      <div class="flex justify-center mt-8">
+        <Pagination page={page} basePath={basePath} />
+      </div>
+    )
+  }
+</div>
