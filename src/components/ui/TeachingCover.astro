@@ -26,11 +26,11 @@ const jacketColor = jackets[category ?? ""] ?? "#475569"; // slate fallback
       src={cover}
       alt={coverAlt ?? title}
       loading="lazy"
-      class="aspect-[3/4] w-full object-cover"
+      class="aspect-[4/3] w-full object-cover"
     />
   ) : (
     <div
-      class="aspect-[3/4] w-full flex flex-col p-5 text-[#f2ede3]"
+      class="aspect-[4/3] w-full flex flex-col p-5 text-[#f2ede3]"
       style={`background: radial-gradient(120% 90% at 85% 8%, rgba(255,255,255,0.12), transparent 55%), ${jacketColor};`}
     >
       <p class="text-[0.65rem] uppercase tracking-[0.18em] opacity-75">
@@ -45,7 +45,7 @@ const jacketColor = jackets[category ?? ""] ?? "#475569"; // slate fallback
           {title}
         </p>
       </div>
-      <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
         <p class="text-xs opacity-75">{profile.shortName}</p>
         {isVideo ? (
           <svg

@@ -53,7 +53,7 @@ const isEmpty = !page || page.data.length === 0;
         </a>
       </div>
     ) : (
-      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-8 sm:grid-cols-2">
         {page.data.map((teaching) => (
           <article class="card bg-base-200 overflow-hidden transition-all hover:shadow-lg">
             <a href={teaching.slug} class="relative block">
@@ -70,7 +70,7 @@ const isEmpty = !page || page.data.length === 0;
                 </span>
               )}
             </a>
-            <div class="card-body">
+            <div class="card-body pt-4 pb-4">
               {teaching.cover && (
                 <h2 class="card-title text-xl">
                   <a href={teaching.slug} class="hover:text-accent">
@@ -85,7 +85,7 @@ const isEmpty = !page || page.data.length === 0;
                   day: "numeric",
                 })}
               </time>
-              <p class="mt-2">{teaching.excerpt}</p>
+              <p class="mt-2 grow-0">{teaching.excerpt}</p>
               <div class="card-actions justify-end mt-2">
                 <a href={teaching.slug} class="btn btn-sm btn-secondary text-secondary-content">
                   {teaching.isVideo ? "Watch" : "Read"}
