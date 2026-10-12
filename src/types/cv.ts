@@ -25,6 +25,8 @@ export interface Publication {
   journal: string;
   time: string;
   link?: string;
+  // Store page (Amazon, Kindle, publisher). Empty = not on sale yet ("Coming Soon").
+  buyLink?: string;
   abstract?: string;
   coverImage?: string;
 }

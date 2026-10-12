@@ -1,0 +1,34 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { publications } from '@/data/cv'
+import type { Publication } from '@/types/cv'
+
+// The full text used to live here as chapters; it was taken down ahead of
+// publication. Old chapter URLs 301 here (see public/_redirects).
+const book = publications.find(p => p.title === 'Antisemitism and the Tribe') as Publication
+---
+
+<Layout title={book.title} description={book.abstract}>
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center md:items-start">
+    <img
+      src={book.coverImage}
+      alt={`Cover of ${book.title}`}
+      class="w-48 md:w-56 shrink-0 shadow-lg"
+    />
+    <div class="text-center md:text-left">
+      <h1 class="text-3xl font-bold mb-2">{book.title}</h1>
+      <p class="text-base mb-6">{book.authors}</p>
+      <p class="mb-6">{book.abstract}</p>
+      {book.buyLink ? (
+        <a href={book.buyLink} class="btn btn-secondary text-secondary-content" target="_blank">
+          Buy Book
+        </a>
+      ) : (
+        <>
+          <p class="font-medium mb-4">Coming soon to Amazon and Kindle.</p>
+          <button type="button" class="btn" disabled>Coming Soon</button>
+        </>
+      )}
+    </div>
+  </div>
+</Layout>
