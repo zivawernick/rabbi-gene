@@ -2,9 +2,15 @@
 import { Image } from 'astro:assets'
 
 import SocialIcons from '@/components/ui/SocialIcons.astro'
+import { publications } from '@/data/cv'
+import { template } from '@/settings'
 
 
 const {fullName, shortName, slogan, title, institute, profilePicture} = Astro.props
+
+// "Buy Now" goes to the paperback page; Amazon offers the Kindle edition from there
+const newBook = publications.find(p => p.title === 'Antisemitism and the Tribe')
+const buyNowUrl = newBook?.buyLinks?.[0]?.url
 ---
 <div class='flex-1'>
   <h1 class='text-4xl font-bold mb-4'>
@@ -13,9 +19,14 @@ const {fullName, shortName, slogan, title, institute, profilePicture} = Astro.pr
   <h2 class='text-3xl font-normal mb-8'> {slogan}
   </h2>
   <p class='text-lg mb-6'>
-    Gene Wernick is a Rabbi with a passion for education, scholarship and community. Rabbi Wernick has just completed his latest book: "Antisemitism and the Tribe." It traces the history of the Jews as an extended family that defies classification as a nation or religion but people united by ancestral ties and beyond common ways of looking at the world distinguished for their independent thought. Rabbi Wernick is also the author of "A Gateway to the Kabbalah". More can be found under publications.
-    Rabbi Wernick is available for guest lectures, pastorial care and life-cycle events in New York City or online.
+    Gene Wernick is a Rabbi with a passion for education, scholarship and community. His new book, <em>"Antisemitism and the Tribe,"</em> is now available on Amazon in paperback and on Kindle. It traces the history of the Jews as an extended family that defies classification as a nation or religion but people united by ancestral ties and beyond common ways of looking at the world distinguished for their independent thought. Rabbi Wernick is also the author of "A Gateway to the Kabbalah". More can be found under <a href={`${template.base}/publications`} class='link hover:text-accent'>publications</a>.
+    Rabbi Wernick is available for guest lectures, pastoral care and life-cycle events in New York City or online.
   </p>
+  {buyNowUrl && (
+    <a href={buyNowUrl} class='btn btn-secondary text-secondary-content mb-6' target='_blank'>
+      Buy Now
+    </a>
+  )}
   <div class='flex gap-4'>
     <SocialIcons />
   </div>
