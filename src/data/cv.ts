@@ -166,9 +166,12 @@ export const publications = [
     authors: "Rabbi Eugene A. Wernick",
     journal: "",
     time: "2026",
-    // Paste the Amazon/Kindle URL here once it exists. While empty, the title is
-    // unlinked and the button reads "Coming Soon" (here and on /antisemitism-and-the-tribe).
-    buyLink: "",
+    badge: "New Release",
+    availability: "Available on Amazon with Prime shipping, and on Kindle.",
+    buyLinks: [
+      { label: "Buy Paperback", url: "https://www.amazon.com/dp/B0HNRTMKBJ" },
+      { label: "Buy on Kindle", url: "https://www.amazon.com/dp/B0HNN4GX8Z" },
+    ],
     abstract:
       "A historical examination of what it means to be a Jew.  Not just a religion or a nation but a familial relationship going back to its origins in the land of Israel. An extended family with feelings of kinship that does not obviate differences of opinions but celebrates them. An easy target for those who wish to hate someone or something because you will always be able to find some Jew who believes or does something you do not believe or hate.",
     coverImage: "/images/antisemitism-and-the-tribe-cover.png",

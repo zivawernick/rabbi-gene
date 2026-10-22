@@ -16,19 +16,18 @@ const book = publications.find(p => p.title === 'Antisemitism and the Tribe') as
       class="w-48 md:w-56 shrink-0 shadow-lg"
     />
     <div class="text-center md:text-left">
+      {book.badge && <span class="badge badge-accent mb-3">{book.badge}</span>}
       <h1 class="text-3xl font-bold mb-2">{book.title}</h1>
       <p class="text-base mb-6">{book.authors}</p>
       <p class="mb-6">{book.abstract}</p>
-      {book.buyLink ? (
-        <a href={book.buyLink} class="btn btn-secondary text-secondary-content" target="_blank">
-          Buy Book
-        </a>
-      ) : (
-        <>
-          <p class="font-medium mb-4">Coming soon to Amazon and Kindle.</p>
-          <button type="button" class="btn" disabled>Coming Soon</button>
-        </>
-      )}
+      {book.availability && <p class="font-medium mb-4">{book.availability}</p>}
+      <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+        {book.buyLinks?.map(({ label, url }) => (
+          <a href={url} class="btn btn-secondary text-secondary-content" target="_blank">
+            {label}
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </Layout>
