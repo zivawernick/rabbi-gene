@@ -9,10 +9,11 @@ interface Props {
 
 const { elements } = Astro.props
 
-// Where the title and "Buy Book" button point; empty = not on sale yet
-const buyUrl = (element: Skill | Publication) => {
+// One button per store link; the title points at the first one
+const buyLinks = (element: Skill | Publication) => {
   const p = element as Publication
-  return p.buyLink || (p.link?.startsWith('http') ? p.link : '')
+  if (p.buyLinks?.length) return p.buyLinks
+  return p.link?.startsWith('http') ? [{ label: 'Buy Book', url: p.link }] : []
 }
 ---
 <ul class='space-y-8 list-none custom-publication-list ml-10 mr-10'>
@@ -29,9 +30,12 @@ const buyUrl = (element: Skill | Publication) => {
         <h3 class='text-lg font-bold mb-2'>{element.title}</h3>
         <p>{element.description}</p>
         </> : <>
-      {buyUrl(element) ? (
+      {(element as Publication).badge && (
+        <span class='badge badge-accent mb-2'>{(element as Publication).badge}</span>
+      )}
+      {buyLinks(element).length ? (
         <a
-          href={buyUrl(element)}
+          href={buyLinks(element)[0].url}
           class='block hover:text-accent transition-colors duration-200'
           target='_blank'
         >
@@ -51,16 +55,15 @@ const buyUrl = (element: Skill | Publication) => {
         {element.time}
       </p>
       <p>{element.abstract}</p>
+      {(element as Publication).availability && (
+        <p class='font-medium mt-3'>{(element as Publication).availability}</p>
+      )}
       <div class="card-actions justify-end mt-4">
-        {buyUrl(element) ? (
-          <a href={buyUrl(element)} class="btn btn-sm btn-secondary text-secondary-content">
-            Buy Book
+        {buyLinks(element).map(({ label, url }) => (
+          <a href={url} class="btn btn-sm btn-secondary text-secondary-content" target="_blank">
+            {label}
           </a>
-        ) : (
-          <button type="button" class="btn btn-sm" disabled>
-            Coming Soon
-          </button>
-        )}
+        ))}
       </div>
       </>
     }

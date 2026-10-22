@@ -19,14 +19,23 @@ export interface Skill {
   description: string;
 }
 
+export interface BuyLink {
+  label: string;
+  url: string;
+}
+
 export interface Publication {
   title: string;
   authors: string;
   journal: string;
   time: string;
   link?: string;
-  // Store page (Amazon, Kindle, publisher). Empty = not on sale yet ("Coming Soon").
-  buyLink?: string;
+  // Store pages, one button each (e.g. Paperback, Kindle). Falls back to `link`.
+  buyLinks?: BuyLink[];
+  // Short label shown next to the title, e.g. "New Release"
+  badge?: string;
+  // One-line note shown above the buy buttons
+  availability?: string;
   abstract?: string;
   coverImage?: string;
 }
